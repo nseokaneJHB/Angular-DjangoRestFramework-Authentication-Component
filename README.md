@@ -37,8 +37,10 @@
 5. ***On your backend terminal run:***
    - **_`python manage.py runserver` if on Windows_**
    - **_`python3 manage.py runserver` if on Linux_**
-6. ***On your frontend terminal run:***
+6. ***Go to the browser and enter `http://127.0.0.1:8000/` on the address bar to run the Django App***
+7. ***On your frontend terminal run:***
    - **_`ng serve`_**
+8. ***Go to the browser and enter `http://localhost:4200/` on the address bar to run the Angular App***
 
 # **Login and Register Component**
 
