@@ -1,1 +1,105 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap");
+:root {
+  --mainBg: rgba(230, 230, 230, 0.863);
+  --sectionBg: #eeeeeed0;
+  --mainColor: #6c757d;
+  --mainShadow: 0 0 5px 0 rgba(0, 0, 0, 0.384);
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-transition: 2s;
+  transition: 2s;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-image: url("./assets/media/bg1.jpeg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+small,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  color: var(--mainColor);
+}
+
+p {
+  font-size: 16px !important;
+}
+
+small,
+a {
+  font-size: 14px !important;
+}
+
+nav.navbar,
+footer {
+  background-color: var(--sectionBg);
+  -webkit-box-shadow: var(--mainShadow);
+          box-shadow: var(--mainShadow);
+}
+
+.jumbotron,
+.main,
+.forms {
+  min-height: 73vh;
+}
+
+.jumbotron {
+  font-family: 'Luckiest Guy', cursive;
+  background-color: var(--mainBg);
+}
+
+.forms {
+  background-color: var(--mainBg);
+}
+
+.forms .register,
+.forms .login {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: hidden;
+  padding: 0 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.forms .register .border-bottom,
+.forms .login .border-bottom {
+  border-color: var(--mainColor) !important;
+}
+
+@media (min-width: 750px) {
+  .forms {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+    display: -ms-grid;
+    display: grid;
+    gap: 10px;
+  }
+  .forms .login {
+    border-right: 1px dotted var(--mainColor);
+  }
+}
+
+footer {
+  min-height: 55px;
+}
+/*# sourceMappingURL=styles.css.map */

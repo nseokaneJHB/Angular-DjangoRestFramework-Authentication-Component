@@ -1,0 +1,105 @@
+// Font
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+
+// Variables
+:root {
+	--mainBg: rgba(230, 230, 230, 0.863);
+	--sectionBg: #eeeeeed0;
+	--mainColor: #6c757d;
+	--mainShadow: 0 0 5px 0 rgba(0, 0, 0, 0.384);
+}
+
+// Screen Sizes
+$tablet: 750px;
+
+// Screen mixins
+@mixin tablet {
+	@media (min-width: #{$tablet}) {
+		@content;
+	}
+}
+
+* {
+	box-sizing: border-box;
+	transition: 2s;
+	padding: 0;
+	margin: 0;
+}
+
+body{
+	background-image: url('./assets/media/bg1.jpeg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+small,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p{
+	color: var(--mainColor);
+}
+
+p{
+	font-size: 16px !important;
+}
+
+small, 
+a{
+	font-size: 14px !important;
+}
+
+nav.navbar, 
+footer{
+	background-color: var(--sectionBg);
+	box-shadow: var(--mainShadow);
+}
+
+.jumbotron,
+.main,
+.forms{
+	min-height: 73vh;
+}
+
+.jumbotron{
+	font-family: 'Luckiest Guy', cursive;
+	background-color: var(--mainBg);	
+}
+
+.forms{
+	background-color: var(--mainBg);
+	.register,
+	.login{
+		justify-content: center;
+		align-items: center;
+		overflow: hidden;
+		padding: 0 10px;
+		display: flex;
+		width: 100%;
+
+		.border-bottom{
+			border-color: var(--mainColor) !important;
+		}
+	}
+
+	@include tablet{
+		grid-template-columns: 1fr 1fr;
+		display: grid;
+		gap: 10px;
+
+		.login{
+			border-right: 1px dotted var(--mainColor);
+		}
+	}
+	
+}
+
+
+footer{
+	min-height: 55px;
+}
