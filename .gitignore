@@ -3,3 +3,4 @@ env/
 
 # Files to ignore
 .DS_Store
+backend/db.sqlite3
