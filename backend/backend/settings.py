@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'a4p&(t-z5yo@97*@k@qxitzqt*u4wgvaud#e-*_c*71u0ug%p('
+SECRET_KEY = 'wi36$=#4h^g-1v4c-wbqc(@ja^4ph8z_gl#$iz$xp1k)d-f$_-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -40,10 +40,19 @@ INSTALLED_APPS = [
 
     'api.apps.ApiConfig',
 
-    'rest_framework',
     'corsheaders',
+    'rest_framework',
     'rest_framework.authtoken',
 ]
+
+# Permissions
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
+
+CORS_ALLOW_ALL_ORIGINS = True
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',

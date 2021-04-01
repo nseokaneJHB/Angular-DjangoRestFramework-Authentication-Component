@@ -4,7 +4,7 @@
 
 #
 
-## **Resources you will need to run these components**
+## **Prerequisites**
 
 - **Python**
 	- `python 3.9.1`
