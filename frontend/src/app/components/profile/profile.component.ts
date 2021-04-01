@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { APICallsService } from '../../service/apicalls.service';
 
 @Component({
-	selector: 'app-navigation',
-	templateUrl: './navigation.component.html',
-	styleUrls: ['./navigation.component.css']
+	selector: 'app-profile',
+	templateUrl: './profile.component.html',
+	styleUrls: ['./profile.component.css']
 })
-export class NavigationComponent implements OnInit {
+export class ProfileComponent implements OnInit {
 
 	constructor(private __apiCall: APICallsService) { }
 
@@ -14,12 +14,6 @@ export class NavigationComponent implements OnInit {
 		this.__apiCall.getUser().subscribe((res: any) => {
 			console.log(res);
 		})
-	}
-
-	signout(){
-		location.reload()
-		localStorage.clear()
-		location.href = '/';
 	}
 
 }

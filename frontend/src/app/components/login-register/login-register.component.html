@@ -1,13 +1,13 @@
 <div class="forms">
 	<form class="login pt-3">
-		<div [formGroup]="loginForm" id="login-form" style="width: 100%;">
+		<div class="container" [formGroup]="loginForm" id="login-form" style="width: 100%;">
 			<div class="form-outline border-bottom mb-4">
-				<input type="email" class="form-control" formControlName="email_address" />
-				<label class="form-label"><i class="fas fa-envelope-open-text"></i>&nbsp;&nbsp;Email address</label>
+				<input type="text" class="form-control" name="username" formControlName="username" required />
+				<label class="form-label"><i class="fas fa-user-secret"></i>&nbsp;&nbsp;Username</label>
 			</div>
 	
 			<div class="form-outline border-bottom mb-4">
-				<input type="password" class="form-control" formControlName="password" />
+				<input type="password" class="form-control" name="password" formControlName="password" required />
 				<label class="form-label"><i class="fas fa-lock"></i>&nbsp;&nbsp;Password</label>
 			</div>
 	
@@ -17,54 +17,50 @@
 				</div>
 			</div>
 	
-			<div class="mb-4 d-flex justify-content-center">
+			<div class="d-flex justify-content-center mt-5">
 				<button type="button" (click)="login()" class="btn btn-primary btn-sm">Sign in</button>
 			</div>
 		</div>
 
-		<div id="login-button" class="mb-4 text-center">
+		<div id="login-button" class="text-center">
 			<p>Already have an account?</p>
 			<button type="button" class="btn btn-info btn-sm" (click)="openLogin()">Show Sign In</button>
 		</div>
 	</form>
 
 	<form class="register pt-3 pb-3">
-		<div [formGroup]="registerForm" id="register-form" style="width: 100%;">
-			<div class="row">
-				<div class="col-sm-12 col-md-6 mb-4">
-					<div class="form-outline border-bottom">
-						<input type="text" class="form-control" formControlName="first_name" />
-						<label class="form-label"><i class="fas fa-user"></i>&nbsp;&nbsp;First name</label>
-					</div>
-				</div>
-				<div class="col-sm-12 col-md-6 mb-4">
-					<div class="form-outline border-bottom">
-						<input type="text" class="form-control" formControlName="last_name" />
-						<label class="form-label"><i class="far fa-user"></i>&nbsp;&nbsp;Last name</label>
-					</div>
-				</div>
+		<div class="container" [formGroup]="registerForm" id="register-form" style="width: 100%;">
+			<div class="form-outline border-bottom mb-4">
+				<input type="text" class="form-control" name="username" formControlName="username" required />
+				<label class="form-label"><i class="fas fa-user-secret"></i>&nbsp;&nbsp;Username</label>
+			</div>
+
+			<div class="form-outline border-bottom mb-4">
+				<input type="text" class="form-control" name="first_name" formControlName="first_name" required />
+				<label class="form-label"><i class="fas fa-user"></i>&nbsp;&nbsp;First name</label>
+			</div>
+		
+			<div class="form-outline border-bottom mb-4">
+				<input type="text" class="form-control" name="last_name" formControlName="last_name" required />
+				<label class="form-label"><i class="far fa-user"></i>&nbsp;&nbsp;Last name</label>
+			</div>
+
+	
+			<div class="form-outline border-bottom mb-4">
+				<input type="email" class="form-control" name="email_address" formControlName="email_address" required />
+				<label class="form-label"><i class="fas fa-envelope-open-text"></i>&nbsp;&nbsp;Email address</label>
+			</div>		
+		
+			<div class="form-outline border-bottom mb-4">
+				<input type="password" class="form-control" name="password" formControlName="password" required />
+				<label class="form-label"><i class="fas fa-lock"></i>&nbsp;&nbsp;Password</label>
 			</div>
 	
-			<div class="row">
-				<div class="col-sm-12 col-md-6 mb-4">
-					<div class="form-outline border-bottom">
-						<input type="email" class="form-control" formControlName="email_address" />
-						<label class="form-label"><i class="fas fa-envelope-open-text"></i>&nbsp;&nbsp;Email address</label>
-					</div>		
-				</div>
-				<div class="col-sm-12 col-md-6 mb-4">
-					<div class="form-outline border-bottom">
-						<input type="password" class="form-control" formControlName="password" />
-						<label class="form-label"><i class="fas fa-lock"></i>&nbsp;&nbsp;Password</label>
-					</div>
-				</div>
-			</div>
-	
-			<div class="mb-4 d-flex justify-content-center">
+			<div class="d-flex justify-content-center mt-5">
 				<button type="button" (click)="register()" class="btn btn-primary btn-sm">Sign up</button>
 			</div>
 	
-			<div class="text-center">
+			<!-- <div class="text-center mt-3">
 				<p>or sign up with:</p>
 	
 				<button type="button" class="btn btn-primary btn-floating mx-1">
@@ -74,7 +70,7 @@
 				<button type="button" class="btn btn-primary btn-floating mx-1">
 					<i class="fab fa-google"></i>
 				</button>
-	
+				
 				<button type="button" class="btn btn-primary btn-floating mx-1">
 					<i class="fab fa-twitter"></i>
 				</button>
@@ -82,10 +78,10 @@
 				<button type="button" class="btn btn-primary btn-floating mx-1">
 					<i class="fab fa-github"></i>
 				</button>
-			</div>
+			</div> -->
 		</div>
 
-		<div id="register-button" class="mb-4 text-center">
+		<div id="register-button" class="text-center">
 			<p>Don't have an account?</p>
 			<button type="button" class="btn btn-info btn-sm" (click)="openRegister()">Show Sign Up</button>
 		</div>

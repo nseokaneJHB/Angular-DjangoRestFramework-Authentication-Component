@@ -3,7 +3,7 @@
 
 // Variables
 :root {
-	--mainBg: rgba(230, 230, 230, 0.863);
+	--mainBg: rgba(240, 240, 240, 0.904);
 	--sectionBg: #eeeeeed0;
 	--mainColor: #6c757d;
 	--mainShadow: 0 0 5px 0 rgba(0, 0, 0, 0.384);
@@ -58,12 +58,22 @@ nav.navbar,
 footer{
 	background-color: var(--sectionBg);
 	box-shadow: var(--mainShadow);
+
+	@include tablet{
+		height: 65px;
+		padding: 0;
+	}
 }
 
 .jumbotron,
 .main,
 .forms{
 	min-height: 73vh;
+}
+
+.jumbotron, .forms{
+	box-shadow: var(--mainShadow);
+	margin: 30px auto;
 }
 
 .jumbotron{
@@ -84,6 +94,24 @@ footer{
 
 		.border-bottom{
 			border-color: var(--mainColor) !important;
+		}
+
+		.error{
+			border-color: #ff8f9a !important;
+			background-color: #f8d7da;
+			border-radius: .25rem;
+			label, input{
+				color: #721c24;
+			}
+		}
+
+		.success{
+			border-color: #6daf7d !important;
+			background-color: #d4edda;
+			border-radius: .25rem;
+			label, input{
+				color: #155724;
+			}
 		}
 	}
 

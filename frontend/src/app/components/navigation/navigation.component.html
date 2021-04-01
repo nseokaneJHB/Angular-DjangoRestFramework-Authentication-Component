@@ -1,16 +1,18 @@
 <nav class="navbar navbar-expand-md sticky-top navbar-light">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="#">
+		<a class="navbar-brand" routerLink="home">
 			<img src="https://nolan-web-profile.s3.amazonaws.com/static/images/nksimple.png" alt="" width="200" height="60" loading="lazy">
 		</a>
+
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 			<i class="fas fa-bars"></i>
 		</button>
 
 		<div class="collapse navbar-collapse" id="navigation">
 			<div class="navbar-nav ml-auto">
-				<a class="nav-link" aria-current="page" routerLink="home"><i class="fas fa-home"></i>&nbsp;&nbsp;Home</a>
-				<a class="nav-link" routerLink="/"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Sign out</a>
+				<a class="nav-link" routerLink="home"><i class="fas fa-home"></i>&nbsp;&nbsp;Home</a>
+				<a class="nav-link" routerLink="profile"><i class="fas fa-user-circle"></i>&nbsp;&nbsp;profile</a>
+				<a class="nav-link" routerLink="/" (click)="signout()"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Sign out</a>
 			</div>
 		</div>
 	</div>

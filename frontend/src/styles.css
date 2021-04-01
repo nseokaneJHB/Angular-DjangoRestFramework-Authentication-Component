@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap");
 :root {
-  --mainBg: rgba(230, 230, 230, 0.863);
+  --mainBg: rgba(240, 240, 240, 0.904);
   --sectionBg: #eeeeeed0;
   --mainColor: #6c757d;
   --mainShadow: 0 0 5px 0 rgba(0, 0, 0, 0.384);
@@ -50,10 +50,24 @@ footer {
           box-shadow: var(--mainShadow);
 }
 
+@media (min-width: 750px) {
+  nav.navbar,
+  footer {
+    height: 65px;
+    padding: 0;
+  }
+}
+
 .jumbotron,
 .main,
 .forms {
   min-height: 73vh;
+}
+
+.jumbotron, .forms {
+  -webkit-box-shadow: var(--mainShadow);
+          box-shadow: var(--mainShadow);
+  margin: 30px auto;
 }
 
 .jumbotron {
@@ -84,6 +98,32 @@ footer {
 .forms .register .border-bottom,
 .forms .login .border-bottom {
   border-color: var(--mainColor) !important;
+}
+
+.forms .register .error,
+.forms .login .error {
+  border-color: #ff8f9a !important;
+  background-color: #f8d7da;
+  border-radius: .25rem;
+}
+
+.forms .register .error label, .forms .register .error input,
+.forms .login .error label,
+.forms .login .error input {
+  color: #721c24;
+}
+
+.forms .register .success,
+.forms .login .success {
+  border-color: #6daf7d !important;
+  background-color: #d4edda;
+  border-radius: .25rem;
+}
+
+.forms .register .success label, .forms .register .success input,
+.forms .login .success label,
+.forms .login .success input {
+  color: #155724;
 }
 
 @media (min-width: 750px) {
