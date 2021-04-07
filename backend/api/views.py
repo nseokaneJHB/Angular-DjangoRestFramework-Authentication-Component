@@ -49,6 +49,9 @@ def profile(request):
     if request.method == 'GET':
         serializer = UserProfileSerializer(instance=user, many=False)
         return Response(serializer.data, status=201)
+    elif request.method == 'PUT':
+        print('Changing user details...')
+        # return Response(serializer.data, status=201)
     else:
         return Response(serializer.errors, status=400)
 

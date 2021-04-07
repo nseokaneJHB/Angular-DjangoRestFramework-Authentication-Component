@@ -1,6 +1,60 @@
-<div class="jumbotron jumbotron-fluid d-flex justify-content-center align-items-center">
-	<div class="container text-center">
-		<h1 class="display-4">My profile <br><i class="far fa-lg fa-laugh-beam text-danger mt-3"></i></h1>
-		<p class="lead mt-5" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">My profile sits here</p>
+<div class="jumbotron jumbotron-fluid">
+	<div class="profile-settings">
+		<div style="width: 100%;">
+			<h1>Account Settings</h1>
+			<div class="profile">
+				<div class="profile-image mb-4">
+					<img class="img-fluid rounded-circle d-block mx-auto" src="https://nolan-web-profile.s3.amazonaws.com/static/images/nolan.jpg" alt="Nolan Kgotso">
+					<button type="button" class="btn btn-outline-info btn-sm mt-4 d-block mx-auto">CHANGE</button>
+				</div>
+				<div class="profile-details">
+					<form class="profile-form" [formGroup]="profileForm" (ngSubmit)="submit()">
+						<div class="mb-3 row">
+							<label class="col-sm-3 col-form-label">Username</label>
+							<div class="col-sm-9">
+								  <input type="text" class="form-control" formControlName="username">
+							</div>
+						</div>
+	
+						<div class="mb-3 row">
+							<label class="col-sm-3 col-form-label">Email</label>
+							<div class="col-sm-9">
+								  <input type="email" class="form-control" formControlName="email">
+							</div>
+						</div>
+	
+						<div class="mb-3 row">
+							<label class="col-sm-3 col-form-label">First Name</label>
+							<div class="col-sm-9">
+								  <input type="text" class="form-control" formControlName="first_name">
+							</div>
+						</div>
+	
+						<div class="mb-3 row">
+							<label class="col-sm-3 col-form-label">Last Name</label>
+							<div class="col-sm-9">
+								  <input type="text" class="form-control" formControlName="last_name">
+							</div>
+						</div>
+	
+						<div class="mb-3 row">
+							<label class="col-sm-3 col-form-label">Phone number</label>
+							<div class="col-sm-9">
+								  <input type="text" class="form-control" formControlName="phone">
+							</div>
+						</div>
+	
+						<div class="mb-4 row">
+							<label class="col-sm-3 col-form-label">Bio</label>
+							<div class="col-sm-9">
+								<textarea class="form-control" rows="3" formControlName="bio"></textarea>
+							</div>
+						</div>
+	
+						<button type="submit" class="btn btn-info btn-sm">SAVE</button>
+					</form>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>

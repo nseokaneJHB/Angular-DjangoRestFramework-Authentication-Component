@@ -19,9 +19,10 @@ class ProfileModel(models.Model):
 	bio = models.TextField(verbose_name="Boigraphy", blank=True)
 	phone = models.CharField(verbose_name="Phone number", max_length=10, blank=True, error_messages = {"max_length": "Please make sure it's 10 numbers."})
 	date_created = models.DateTimeField(verbose_name="Created", auto_now_add=True)
+	date_updated = models.DateTimeField(verbose_name="Updated", auto_now=True)
 
 	def __str__(self):
-		return str(self.user)
+		return str(self.account)
 
 	@receiver(post_save, sender=User)
 	def create_profile(sender, instance, created, **kwargs):

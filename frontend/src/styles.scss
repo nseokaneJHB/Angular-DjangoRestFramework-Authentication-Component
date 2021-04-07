@@ -124,7 +124,43 @@ footer{
 			border-right: 1px dotted var(--mainColor);
 		}
 	}
+}
+
+.profile-settings{
+	padding: 1rem;
+	h1{
+		border-bottom: 1px solid grey;
+		margin-bottom: 25px;
+	}
 	
+	img{
+		height: 180px;
+		width: 200px;
+	}
+
+	.btn{
+		width: 150px;
+	}
+
+	@include tablet{
+		border: 1px solid;
+		align-items: center;
+		display: flex;
+		height: 73vh;
+
+		h1{
+			margin-bottom: 50px;
+			margin-top: -40px;
+		}
+
+		.profile{
+			border-bottom: 1px solid grey;
+			grid-template-columns: 1fr 2fr;
+			padding-bottom: 30px;
+			display: grid;
+			gap: 20px;
+		}	
+	}
 }
 
 

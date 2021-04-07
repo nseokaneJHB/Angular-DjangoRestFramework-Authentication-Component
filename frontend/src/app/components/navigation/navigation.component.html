@@ -4,11 +4,11 @@
 			<img src="https://nolan-web-profile.s3.amazonaws.com/static/images/nksimple.png" alt="" width="200" height="60" loading="lazy">
 		</a>
 
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+		<button *ngIf="authorized" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 			<i class="fas fa-bars"></i>
 		</button>
 
-		<div class="collapse navbar-collapse" id="navigation">
+		<div *ngIf="authorized" class="collapse navbar-collapse" id="navigation">
 			<div class="navbar-nav ml-auto">
 				<a class="nav-link" routerLink="home"><i class="fas fa-home"></i>&nbsp;&nbsp;Home</a>
 				<a class="nav-link" routerLink="profile"><i class="fas fa-user-circle"></i>&nbsp;&nbsp;profile</a>

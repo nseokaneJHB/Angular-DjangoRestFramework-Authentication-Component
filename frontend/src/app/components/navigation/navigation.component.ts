@@ -10,12 +10,23 @@ export class NavigationComponent implements OnInit {
 
 	constructor(private __apiCall: APICallsService) { }
 
+	// Decleration
+	error: any = {}
+	authorized: any = false
+
+	// Get user on start
 	ngOnInit(): void {
 		this.__apiCall.getUser().subscribe((res: any) => {
-			console.log(res);
+			this.authorized = true
+		}, (error: any) => {
+			this.authorized = false
+			this.error.statusText = error.statusText
+			this.error.status = error.status
+			console.log(this.authorized);
 		})
 	}
 
+	// Sign out
 	signout(){
 		location.reload()
 		localStorage.clear()
