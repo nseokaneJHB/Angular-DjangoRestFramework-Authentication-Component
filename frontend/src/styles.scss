@@ -1,3 +1,4 @@
+/* You can add global styles to this file, and also import other style files */
 // Font
 @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
 
@@ -27,10 +28,11 @@ $tablet: 750px;
 }
 
 body{
-	background-image: url('./assets/media/bg1.jpeg');
+	background-image: url('./assets/media/bg2.jpeg');
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
+	min-height: 100vh;
 }
 
 small,
@@ -55,115 +57,181 @@ a{
 }
 
 nav.navbar, 
-footer{
+footer,
+.jumbotron{
 	background-color: var(--sectionBg);
 	box-shadow: var(--mainShadow);
-
-	@include tablet{
-		height: 65px;
-		padding: 0;
-	}
 }
 
-.jumbotron,
-.main,
-.forms{
-	min-height: 73vh;
+
+.navbar .navbar-nav .nav-item a.nav-link,
+.navbar .navbar-nav .nav-item a.dropdown-item{
+	color: var(--mainColor) !important;
 }
 
-.jumbotron, .forms{
-	box-shadow: var(--mainShadow);
-	margin: 30px auto;
-}
+.main{
+	margin: 50px 0;
 
-.jumbotron{
-	font-family: 'Luckiest Guy', cursive;
-	background-color: var(--mainBg);	
-}
-
-.forms{
-	background-color: var(--mainBg);
-	.register,
-	.login{
-		justify-content: center;
-		align-items: center;
-		overflow: hidden;
-		padding: 0 10px;
-		display: flex;
-		width: 100%;
-
-		.border-bottom{
-			border-color: var(--mainColor) !important;
-		}
-
-		.error{
-			border-color: #ff8f9a !important;
-			background-color: #f8d7da;
-			border-radius: .25rem;
-			label, input{
-				color: #721c24;
-			}
-		}
-
-		.success{
-			border-color: #6daf7d !important;
-			background-color: #d4edda;
-			border-radius: .25rem;
-			label, input{
-				color: #155724;
-			}
-		}
+	.error_alert, .other_error_alert{
+		border: 1px solid transparent;
+		background-color: #f8d7da;
+		border-color: #f5c6cb;
+		padding: .25rem 1.25rem;
+		border-radius: .25rem;
+		position: relative;
+		color: #721c24;
+		display: block;
 	}
 
-	@include tablet{
-		grid-template-columns: 1fr 1fr;
-		display: grid;
-		gap: 10px;
-
-		.login{
-			border-right: 1px dotted var(--mainColor);
-		}
-	}
-}
-
-.profile-settings{
-	padding: 1rem;
-	h1{
-		border-bottom: 1px solid grey;
-		margin-bottom: 25px;
+	.show{
+		display: block;
 	}
 	
-	img{
-		height: 180px;
-		width: 200px;
+	.hide{
+		display: none;
 	}
 
-	.btn{
-		width: 150px;
+	.md-form{
+		margin: 25px 0;
 	}
 
-	@include tablet{
-		border: 1px solid;
-		align-items: center;
-		display: flex;
-		height: 73vh;
+	.jumbotron, #changeModal{
+		background-color: var(--mainBg);
+	}
 
-		h1{
-			margin-bottom: 50px;
-			margin-top: -40px;
+	.authentication_forms{
+		padding: 0 30px;
+		
+		.register,
+		.login{
+			max-width: 500px;
+			padding: 20px 0;
+			margin: auto;
+		}
+	}
+
+	.profile-settings{
+		padding: 0 1rem;
+		.profile{
+			img{
+				height: 185px;
+				width: 200px;
+			}
+
+			.avatar_icon{
+				justify-content: center;
+				align-items: center;
+				font-size: xx-large;
+				display: flex;
+				height: 185px;
+				width: 200px;
+			}
+
+			h5{
+				text-align: center;
+				margin-top: 25px;
+			}
 		}
 
-		.profile{
-			border-bottom: 1px solid grey;
-			grid-template-columns: 1fr 2fr;
-			padding-bottom: 30px;
-			display: grid;
-			gap: 20px;
-		}	
+		.btn{
+			width: 150px;
+		}
 	}
 }
 
+@include tablet{
+	.authentication_forms{
+		grid-template-areas: "login register";
+		grid-template-columns: 1fr 1fr;
+		display: grid;
 
-footer{
-	min-height: 55px;
+		.register,
+		.login{
+			padding: 1rem !important;
+			width: 100%;
+		}
+
+		.login{
+			grid-area: login;
+			
+		}
+
+		.register{
+			grid-area: register;
+		}
+	}
+
+	.profile-settings{
+		grid-template-areas: "profile settings";
+		grid-template-columns: 1fr 2fr;
+		display: grid;
+		gap: 20px;
+
+		.profile{
+			justify-content: center;
+			align-items: center;
+			grid-area: profile;
+			display: flex;
+		}
+
+		.settings{
+			grid-area: settings;
+			padding: 0 50px;
+		}
+	}
 }
+
+// Animate Elements
+.text_pop {
+	animation: text_pop 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite alternate-reverse both;
+}
+
+.text_shadow {
+	animation: text_shadow 1s ease-in-out infinite alternate-reverse both;
+}
+
+@-webkit-keyframes text_pop {
+	0% {
+		transform: translateY(0);
+		transform-origin: 50% 50%;
+	  	text-shadow: none;
+	}
+	100% {
+		transform: translateY(-50px);
+		transform-origin: 50% 50%;
+	  	text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);
+	}
+}
+  
+@keyframes text_pop {
+	0% {
+		transform: translateY(0);
+		transform-origin: 50% 50%;
+	  	text-shadow: none;
+	}
+	100% {
+		transform: translateY(-50px);
+		transform-origin: 50% 50%;
+	  	text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);
+	}
+}
+
+@-webkit-keyframes text_shadow {
+	0% {
+	  	text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+	}
+	100% {
+	  	text-shadow: 0 0 18px rgba(0, 0, 0, 0.35);
+	}
+}
+
+@keyframes text_shadow {
+	0% {
+		text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+	}
+	100% {
+		text-shadow: 0 0 18px rgba(0, 0, 0, 0.35);
+	}
+}
+  
+  

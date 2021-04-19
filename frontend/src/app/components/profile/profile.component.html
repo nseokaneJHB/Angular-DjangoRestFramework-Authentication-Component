@@ -1,60 +1,85 @@
-<div class="jumbotron jumbotron-fluid">
+<div class="jumbotron jumbotron-fluid" [formGroup]="profileForm">
 	<div class="profile-settings">
-		<div style="width: 100%;">
-			<h1>Account Settings</h1>
-			<div class="profile">
-				<div class="profile-image mb-4">
-					<img class="img-fluid rounded-circle d-block mx-auto" src="https://nolan-web-profile.s3.amazonaws.com/static/images/nolan.jpg" alt="Nolan Kgotso">
-					<button type="button" class="btn btn-outline-info btn-sm mt-4 d-block mx-auto">CHANGE</button>
+		<div class="profile">
+			<div>
+				<img id="profile_link" alt="{{username}}" class="img-fluid rounded-circle d-block mx-auto" src="">
+				
+				<h5>{{title}}</h5>
+				<div class="d-flex justify-content-center">
+					<button type="button" mdbBtn color="secondary" data-toggle="modal" data-target="#basicExample" (click)="changeModal.show()" mdbWavesEffect>Change</button>
 				</div>
-				<div class="profile-details">
-					<form class="profile-form" [formGroup]="profileForm" (ngSubmit)="submit()">
-						<div class="mb-3 row">
-							<label class="col-sm-3 col-form-label">Username</label>
-							<div class="col-sm-9">
-								  <input type="text" class="form-control" formControlName="username">
-							</div>
-						</div>
+			</div>
+		</div>
+
+		<div class="settings">
+			<form>
+				<div class="md-form">
+					<input mdbInput type="text" class="form-control form-control-sm" formControlName="username"
+						required>
+					<label><i class="fas fa-user-secret"></i>&nbsp;&nbsp;Username</label>
+				</div>
+
+				<div class="md-form">
+					<input mdbInput type="text" class="form-control form-control-sm" formControlName="first_name"
+						required>
+					<label><i class="far fa-user"></i>&nbsp;&nbsp;First Name</label>
+				</div>
+
+				<div class="md-form">
+					<input mdbInput type="text" class="form-control form-control-sm" formControlName="last_name"
+						required>
+					<label><i class="fas fa-user"></i>&nbsp;&nbsp;Last Name</label>
+				</div>
+
+				<div class="md-form">
+					<input mdbInput type="email" class="form-control form-control-sm" formControlName="email" required>
+					<label><i class="fas fa-envelope-open"></i>&nbsp;&nbsp;Email</label>
+				</div>
+
+				<div class="md-form">
+					<input mdbInput type="text" class="form-control form-control-sm" formControlName="phone">
+					<label><i class="fas fa-phone-alt"></i>&nbsp;&nbsp;Phone Number</label>
+				</div>
+
+				<div class="md-form">
+					<textarea type="text" class="md-textarea form-control form-control-sm" rows="3"
+						formControlName="bio" mdbInput></textarea>
+					<label><i class="fas fa-info"></i>&nbsp;&nbsp;Bio</label>
+				</div>
+
+				<div class="d-flex justify-content-center mt-4 border">
+					<button type="button" mdbBtn color="info" mdbWavesEffect (click)="submit()">Submit</button>
+					<button type="button" mdbBtn color="warning" mdbWavesEffect (click)=delete()>Delete profile</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div mdbModal #changeModal="mdbModal" class="modal fade center" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div id="changeModal" class="modal-content">
+				<div class="modal-header text-center">
+					<h4 class="modal-title w-100 font-weight-bold">Profile Picture</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="changeModal.hide()">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body mx-3">
+					<div class="md-form">
+						<input mdbInput type="text" class="form-control form-control-sm" formControlName="title">
+						<label><i class="fas fa-heading"></i>&nbsp;&nbsp;Title</label>
+					</div>
 	
-						<div class="mb-3 row">
-							<label class="col-sm-3 col-form-label">Email</label>
-							<div class="col-sm-9">
-								  <input type="email" class="form-control" formControlName="email">
-							</div>
-						</div>
-	
-						<div class="mb-3 row">
-							<label class="col-sm-3 col-form-label">First Name</label>
-							<div class="col-sm-9">
-								  <input type="text" class="form-control" formControlName="first_name">
-							</div>
-						</div>
-	
-						<div class="mb-3 row">
-							<label class="col-sm-3 col-form-label">Last Name</label>
-							<div class="col-sm-9">
-								  <input type="text" class="form-control" formControlName="last_name">
-							</div>
-						</div>
-	
-						<div class="mb-3 row">
-							<label class="col-sm-3 col-form-label">Phone number</label>
-							<div class="col-sm-9">
-								  <input type="text" class="form-control" formControlName="phone">
-							</div>
-						</div>
-	
-						<div class="mb-4 row">
-							<label class="col-sm-3 col-form-label">Bio</label>
-							<div class="col-sm-9">
-								<textarea class="form-control" rows="3" formControlName="bio"></textarea>
-							</div>
-						</div>
-	
-						<button type="submit" class="btn btn-info btn-sm">SAVE</button>
-					</form>
+					<div class="md-form">
+						<input mdbInput type="url" class="form-control form-control-sm" formControlName="avatar">
+						<label><i class="fas fa-user-tie"></i>&nbsp;&nbsp;Avatar URL</label>
+					</div>
+				</div>
+				<div class="modal-footer d-flex justify-content-center">
+					<button mdbBtn color="default" class="waves-light" mdbWavesEffect (click)="saveLink()" (click)="changeModal.hide()">Change</button>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+

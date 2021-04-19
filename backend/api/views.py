@@ -23,8 +23,20 @@ class CustomAuthToken(ObtainAuthToken):
 
         return Response(data)
 
+@api_view(['POST'])
+def register(request):
+    if request.method == 'POST':
+        serializer = CreateUserSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=201)
+            
+        else:
+            return Response(serializer.errors, status=400)
 
-def Logout(request):
+        return Response(serializer.data, status=201)
+
+def logout(request):
     return logout(request)
 
 # ================================================ Signin & Signout ==================================================
@@ -41,18 +53,48 @@ def api_overview(request):
 
 # ================================================ Profile ==================================================
 
-@api_view(['GET', 'PUT'])
-# @permission_classes((IsAuthenticated,))
+@api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes((IsAuthenticated,))
 def profile(request):
-    user = User.objects.get(id=request.user.id)
-
+    user = request.user
+    profile = ProfileModel.objects.get(account=user)
+    
     if request.method == 'GET':
-        serializer = UserProfileSerializer(instance=user, many=False)
+        serializer = UserProfileSerializer(user, many=False)
         return Response(serializer.data, status=201)
+
     elif request.method == 'PUT':
-        print('Changing user details...')
-        # return Response(serializer.data, status=201)
+        serializer = UserProfileSerializer(user, many=False)
+        profile_serializer = ProfileSerializer(instance=profile, data=request.data['account'])
+        
+        if profile_serializer.is_valid():
+            profile_serializer.save()
+            return Response(serializer.data, status=201)
+        else:
+            return Response(profile_serializer.errors, status=400)
+
+    elif request.method == 'DELETE':
+        user.delete()
+        return Response("User deleted!...")
+        
     else:
         return Response(serializer.errors, status=400)
 
+
+@api_view(['PUT'])
+@permission_classes((IsAuthenticated,))
+def user(request):
+    user = request.user
+
+    if request.method == 'PUT':
+        serializer = UserProfileSerializer(user, many=False)
+        user_serializer = UserSerializer(instance=user, data=request.data)
+        if user_serializer.is_valid():
+            user_serializer.save()
+            return Response(serializer.data, status=201)
+        else:
+            return Response(user_serializer.errors, status=400)
+    else:
+        return Response(serializer.errors, status=400)
+    
 # ================================================ Profile ==================================================

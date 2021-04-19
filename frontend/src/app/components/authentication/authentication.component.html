@@ -1,0 +1,94 @@
+<div class="jumbotron jumbotron-fluid">
+	<small class="text-center text-warning d-block">Fields with * are required</small>
+	<div class="authentication_forms">
+		<div class="login">
+			<div>
+				<div id="login_button" class="text-center">
+					<p>Already have an account?</p>
+					<div class="d-flex justify-content-center">
+						<button type="button" mdbBtn color="secondary" mdbWavesEffect (click)="openLogin()">Show sign in</button>
+					</div>
+				</div>
+				<form id="login_form" [formGroup]="loginForm">
+					<div class="md-form">
+						<input mdbInput type="text" class="form-control form-control-sm" formControlName="username" >
+						<label><i class="fas fa-user-secret"></i>&nbsp;&nbsp;Username<strong>*</strong></label>
+						<small *ngIf="errors.username" class="error_alert">{{errors.username}}</small>
+					</div>
+	
+					<div class="md-form">
+						<input mdbInput type="password" class="form-control form-control-sm" formControlName="password" required>
+						<label><i class="fas fa-lock-open"></i>&nbsp;&nbsp;Password<strong>*</strong></label>
+						<small *ngIf="errors.password" class="error_alert">{{errors.password}}</small>
+					</div>
+
+					<small *ngIf="errors.non_field_errors" role="alert" class="other_error_alert text-center">{{errors.non_field_errors}}</small>
+
+					<small #alert id="register_alert" class="alert alert-success" role="alert">
+						{{alert_message}} <strong>{{username}}</strong>
+					</small>
+	
+					<div class="d-flex justify-content-center mt-4">
+						<button type="button" mdbBtn color="info" mdbWavesEffect (click)="login()">Sign in</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="register">
+			<div>
+				<div id="register_button" class="text-center">
+					<p>Don't have an account?</p>
+					<div class="d-flex justify-content-center">
+						<button type="button" mdbBtn color="secondary" mdbWavesEffect (click)="openRegister()">Show sign up</button>
+					</div>
+				</div>
+				<form id="register_form" [formGroup]="registerForm">
+					<div class="md-form">
+						<input mdbInput type="text" class="form-control form-control-sm" formControlName="username" required>
+						<label><i class="fas fa-user-secret"></i>&nbsp;&nbsp;Username<strong>*</strong></label>
+						<small *ngIf="errors.username" class="error_alert">{{errors.username}}</small>
+					</div>
+	
+					<div class="md-form">
+						<input mdbInput type="text" class="form-control form-control-sm" formControlName="first_name" required>
+						<label><i class="far fa-user"></i>&nbsp;&nbsp;First Name</label>
+					</div>
+	
+					<div class="md-form">
+						<input mdbInput type="text" class="form-control form-control-sm" formControlName="last_name" required>
+						<label><i class="fas fa-user"></i>&nbsp;&nbsp;Last Name</label>
+					</div>
+	
+					<div class="md-form">
+						<input mdbInput type="email" class="form-control form-control-sm" formControlName="email" required>
+						<label><i class="fas fa-envelope-open"></i>&nbsp;&nbsp;Email</label>
+					</div>
+	
+					<div class="md-form">
+						<input mdbInput type="password" class="form-control form-control-sm" formControlName="password" required>
+						<label><i class="fas fa-lock"></i>&nbsp;&nbsp;Password<strong>*</strong></label>
+						<small *ngIf="errors.password" class="error_alert">{{errors.password}}</small>
+					</div>
+	
+					<div class="md-form">
+						<input mdbInput type="password" class="form-control form-control-sm" formControlName="password2" required>
+						<label><i class="fas fa-lock-open"></i>&nbsp;&nbsp;Confirm Password<strong>*</strong></label>
+						<small *ngIf="errors.password2" class="error_alert">{{errors.password2}}</small>
+					</div>
+	
+					<div class="d-flex justify-content-center mt-4">
+						<button type="button" mdbBtn color="info" mdbWavesEffect (click)="register()">Sign up</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+

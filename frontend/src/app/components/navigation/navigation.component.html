@@ -1,19 +1,30 @@
-<nav class="navbar navbar-expand-md sticky-top navbar-light">
-	<div class="container-fluid">
-		<a class="navbar-brand" routerLink="home">
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-light" [containerInside]="false">
+	<mdb-navbar-brand>
+		<a class="navbar-brand" routerLink="/">
 			<img src="https://nolan-web-profile.s3.amazonaws.com/static/images/nksimple.png" alt="" width="200" height="60" loading="lazy">
 		</a>
+	</mdb-navbar-brand>
+  
+	<links>
+		<ul class="navbar-nav">
+			<ng-container *ngIf="authorized; else elseTemplate">
+				<li class="nav-item">
+					<a class="nav-link waves-light" routerLink="profile" mdbWavesEffect><mdb-icon fas icon="user-secret"></mdb-icon> <strong>{{username}}</strong></a>
+				</li>
+			</ng-container>
+			<ng-template #elseTemplate>
+				<li class="nav-item">
+					<a class="nav-link waves-light" mdbWavesEffect><mdb-icon fas icon="user-secret"></mdb-icon> <strong>Anonymous</strong></a>
+				</li>
+			</ng-template>
+			
+		</ul>
 
-		<button *ngIf="authorized" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-			<i class="fas fa-bars"></i>
-		</button>
-
-		<div *ngIf="authorized" class="collapse navbar-collapse" id="navigation">
-			<div class="navbar-nav ml-auto">
-				<a class="nav-link" routerLink="home"><i class="fas fa-home"></i>&nbsp;&nbsp;Home</a>
-				<a class="nav-link" routerLink="profile"><i class="fas fa-user-circle"></i>&nbsp;&nbsp;profile</a>
-				<a class="nav-link" routerLink="/" (click)="signout()"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Sign out</a>
-			</div>
-		</div>
-	</div>
-</nav>
+		<ul class="navbar-nav ml-auto" *ngIf="authorized">
+			<li class="nav-item">
+				<a class="nav-link waves-light" routerLink="authentication" mdbWavesEffect (click)="signout()"><mdb-icon fas icon="sign-out-alt"></mdb-icon>&nbsp;&nbsp;Sign out</a>
+			</li>
+		</ul>
+	</links>
+</mdb-navbar>

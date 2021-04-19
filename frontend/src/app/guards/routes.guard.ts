@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 @Injectable({
 	providedIn: 'root'
 })
-
 export class RoutesGuard implements CanActivate {
 	user: any = {
 		token: localStorage.getItem('TOKEN'),
@@ -20,5 +19,4 @@ export class RoutesGuard implements CanActivate {
 			return false;
 		}
 	}
-	
 }

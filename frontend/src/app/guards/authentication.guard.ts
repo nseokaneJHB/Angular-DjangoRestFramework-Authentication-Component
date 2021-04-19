@@ -5,8 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
 	providedIn: 'root'
 })
-
-export class LoginRegisterGuard implements CanActivate {
+export class AuthenticationGuard implements CanActivate {
 	user: any = {
 		token: localStorage.getItem('TOKEN'),
 		user_id: localStorage.getItem('USER_ID'), 
@@ -20,5 +19,4 @@ export class LoginRegisterGuard implements CanActivate {
 			return true;
 		}
 	}
-	
 }
