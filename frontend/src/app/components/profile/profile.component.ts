@@ -77,6 +77,7 @@ export class ProfileComponent implements OnInit {
 	}
 
 	submit(){
+		let success = document.getElementById('update_success')
 		let formValues = this.profileForm.value
 
 		let user = {
@@ -98,6 +99,10 @@ export class ProfileComponent implements OnInit {
 		this.__api.updateUser(user).subscribe((user_res: any) => {
 			this.__api.updateProfile(profile).subscribe((profile_res: any) => {
 				this.load()
+				success.classList.remove('hide');
+				setTimeout(() => {
+					success.classList.add('hide');
+				}, 3000);
 			}, (error: any)=> {
 				console.log(error);
 			})

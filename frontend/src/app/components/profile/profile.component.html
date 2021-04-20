@@ -47,15 +47,17 @@
 					<label><i class="fas fa-info"></i>&nbsp;&nbsp;Bio</label>
 				</div>
 
+				<small id="update_success" class="alert alert-success d-block text-center hide" role="alert">Successfully Updated!</small>
+
 				<div class="d-flex justify-content-center mt-4 border">
 					<button type="button" mdbBtn color="info" mdbWavesEffect (click)="submit()">Submit</button>
-					<button type="button" mdbBtn color="warning" mdbWavesEffect (click)=delete()>Delete profile</button>
+					<button type="button" mdbBtn color="warning" class="relative waves-light" (click)="deleteModal.show()" mdbWavesEffect>Delete profile</button >
 				</div>
 			</form>
 		</div>
 	</div>
 
-	<div mdbModal #changeModal="mdbModal" class="modal fade center" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div mdbModal #changeModal="mdbModal" class="modal fade center" tabindex="-1" role="dialog" aria-labelledby="myChangeModalLabel" aria-hidden="true" style="margin-top: 150px;">
 		<div class="modal-dialog" role="document">
 			<div id="changeModal" class="modal-content">
 				<div class="modal-header text-center">
@@ -81,5 +83,22 @@
 			</div>
 		</div>
 	</div>
+
+	<div mdbModal #deleteModal="mdbModal" class="modal fade center" tabindex="-1" role="dialog" aria-labelledby="myDeleteModalLabel" aria-hidden="true" style="margin-top: 150px;">
+		<div class="modal-dialog" role="document">
+			<div id="deleteModal" class="modal-content">
+				<div class="modal-header text-center">
+					<h4 class="modal-title w-100 font-weight-bold">Are you sure you want to delete your profile?</h4>
+					<button type="button" class="close pull-right" aria-label="Close" (click)="deleteModal.hide()">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-footer justify-content-center">
+					<button type="button" mdbBtn color="default" class="waves-light" aria-label="Close" (click)="deleteModal.hide()" mdbWavesEffect>Cancel</button>
+					<button type="button" mdbBtn color="danger" class="relative waves-light" mdbWavesEffect (click)=delete()>Confirm</button>
+				</div>
+			</div>
+		</div >
+	</div >
 </div>
 

@@ -8,7 +8,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class HomeComponent implements OnInit {
 
-	username: any = ""
+	username: any = "";
 
 	constructor(private __api: ApiService) { }
 
@@ -19,5 +19,4 @@ export class HomeComponent implements OnInit {
 			console.log(errors);
 		})
 	}
-
 }

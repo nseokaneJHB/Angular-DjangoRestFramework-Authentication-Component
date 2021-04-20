@@ -88,14 +88,14 @@ footer,
 	}
 	
 	.hide{
-		display: none;
+		display: none !important;
 	}
 
 	.md-form{
 		margin: 25px 0;
 	}
 
-	.jumbotron, #changeModal{
+	.jumbotron, #changeModal, #deleteModal{
 		background-color: var(--mainBg);
 	}
 
