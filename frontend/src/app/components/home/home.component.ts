@@ -13,6 +13,10 @@ export class HomeComponent implements OnInit {
 	constructor(private __api: ApiService) { }
 
 	ngOnInit(): void {
+		this.load()
+	}
+
+	load(){
 		this.__api.getUser().subscribe((res: any) => {
 			this.username = res.username
 		}, (errors: any) => {

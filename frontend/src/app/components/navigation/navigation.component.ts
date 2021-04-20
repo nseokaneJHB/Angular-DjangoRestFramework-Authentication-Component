@@ -18,7 +18,10 @@ export class NavigationComponent implements OnInit {
 
 	// Get user on start
 	ngOnInit(): void {
-		
+		this.load()
+	}
+
+	load(){
 		this.__api.getUser().subscribe((res: any) => {
 			this.username = res.username
 			this.authorized = true
