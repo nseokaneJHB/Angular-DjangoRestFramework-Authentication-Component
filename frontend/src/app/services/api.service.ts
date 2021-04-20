@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -20,7 +21,7 @@ export class ApiService {
 
 	constructor(private __http: HttpClient) { }
 
-	url: string = 'http://127.0.0.1:8000/api';
+	url: string = environment.URL;
 
 	registerUser(user: any){
 		return this.__http.post(`${this.url}/register/`, user)
