@@ -14,8 +14,8 @@ import { AuthenticationGuard } from './guards/authentication.guard';
 const routes: Routes = [
 	{ path: 'authentication', component: AuthenticationComponent, canActivate: [AuthenticationGuard] },
 	{ path: 'profile', component: ProfileComponent, canActivate: [RoutesGuard] },
-	{ path: '', component: HomeComponent, canActivate: [RoutesGuard] },
-	{ path: '', pathMatch: 'full', redirectTo: '/' },
+	{ path: 'home', component: HomeComponent, canActivate: [RoutesGuard] },
+	{ path: '', pathMatch: 'full', redirectTo: 'home' },
 	
 	// Error page
 	{ path: '404', component: NotfoundComponent },

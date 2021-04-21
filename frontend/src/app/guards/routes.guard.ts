@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, UrlTree } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable({
 	providedIn: 'root'
@@ -12,12 +13,13 @@ export class RoutesGuard implements CanActivate {
 		username: localStorage.getItem('USERNAME')
 	}
 
-	canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+	constructor(private __router: Router){}
+
+	canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree {
 		if (this.user.token !== null && this.user.user_id !== null && this.user.username !== null) {
 			return true
 		}else{
-			
-			return false;
+			return this.__router.parseUrl("/authentication");
 		}
 	}
 }
