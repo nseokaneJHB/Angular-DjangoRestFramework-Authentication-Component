@@ -11,3 +11,4 @@ docker run --publish 4200:4200 frontend-authentication-app
 # In the root directory
 docker-compose up --build
 docker-compose down
+docker system prune
