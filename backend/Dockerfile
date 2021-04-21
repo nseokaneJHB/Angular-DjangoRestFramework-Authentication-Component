@@ -11,7 +11,7 @@ COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
 
 # Copy all files from local directory to the previously created directory on the docker container
-COPY . .
+COPY . /backend
 
 # Run the django project from the previously created directory on the docker container then,
 # Make the project from the previously created directory on the docker container accessible to the main computer using the ip and port number

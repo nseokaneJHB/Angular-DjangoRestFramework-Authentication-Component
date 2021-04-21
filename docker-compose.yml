@@ -1,0 +1,17 @@
+# Building services to run
+version: '3.8'
+services:
+    backend:
+        build: ./backend/
+        restart: always
+        ports:
+            - '8000:8000'
+    frontend:
+        build: ./frontend/
+        depends_on:
+            - backend
+        links:
+            - 'backend:backend'
+        ports:
+            - '4200:4200'
+

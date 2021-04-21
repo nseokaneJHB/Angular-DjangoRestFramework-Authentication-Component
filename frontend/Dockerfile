@@ -4,7 +4,7 @@ WORKDIR /usr/src/app/
 
 COPY . .
 
-RUN npm i -g @angular/cli@10.0.6
+RUN npm i -g @angular/cli@11.2.4
 
 RUN npm i
 RUN ng --version
