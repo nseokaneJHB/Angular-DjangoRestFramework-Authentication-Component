@@ -24,7 +24,7 @@
 ## ***Project Setup***
 
 1. **_Clone this project to your desired directory._**
-2. **_Setup a python environment on your [Linux](https://mothergeo-py.readthedocs.io/en/latest/development/how-to/venv.html) `(Alternatively use Python3 -m venv environment_name)` or [Windows](https://mothergeo-py.readthedocs.io/en/latest/development/how-to/venv-win.html)._**
+2. **_Setup a python environment on your [Linux](https://mothergeo-py.readthedocs.io/en/latest/development/how-to/venv.html) (Alternatively use `python3 -m venv environment_name`) or [Windows](https://mothergeo-py.readthedocs.io/en/latest/development/how-to/venv-win.html)._**
 3. **_Install [NodeJS](https://nodejs.org/en/)._**
 4. **_Activate your python environment and navigate to --> cloned project directory --> Backend directory, then run the following command:_**
 	- **_`pip install -r requirements.txt` if on Windows_**
