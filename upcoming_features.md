@@ -1,3 +1,4 @@
 # **Features to add**
 
-1. Whitelisted domain authentication
+1. JWT Authentication
+2. Whitelisted domain authentication
