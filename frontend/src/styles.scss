@@ -27,7 +27,7 @@ $tablet: 750px;
 
 body {
 	background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-	min-height: 100vh;
+	height: 100vh;
 
 	&::before {
 		box-shadow: 10px 300px #f5f3ce, 1744px 122px #f5f3ce, 134px 1321px #f5f3ce,
@@ -237,12 +237,47 @@ body {
 		transition: transform 0.2s;
 		border-radius: 50%;
 		position: absolute;
-		left: -150px;
-		top: -150px;
-		height: 60%;
 		content: "";
 		z-index: -1;
-		width: 30%;
+		height: 60%;
+		width: 100%;
+		top: -150px;
+		left: 0px;
+	}
+
+	.navbar{
+		min-height: 15%;
+	}
+
+	.main-content{
+		text-align: center;
+		overflow-y: scroll;
+		padding: 1em;
+		height: 70%;
+		.authentication_forms{
+			min-height: 100%;
+			.login, .register{
+				background-color: red;
+			}
+		}
+	}
+
+	.footer{
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+		display: flex;
+		height: 15%;
+		color: #eee;
+		.socials{
+			justify-content: space-between;
+			margin-bottom: 5px;
+			display: flex;
+			width: 80px;
+			a{
+				color: plum;
+			}
+		}
 	}
 
 	@keyframes animStars {
