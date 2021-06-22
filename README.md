@@ -50,7 +50,7 @@
 
 #
 
-## **Login and Register Component**
+## **Login and Register**
 
 #
 
