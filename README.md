@@ -1,6 +1,10 @@
 # **Components**
 
-*You will find a Full Stack Token Authentication component built with Django Rest Framework and Angular 11 which you can use anytime on your app*
+*You will find a Full Stack Authentication component built with Django Rest Framework and Angular 11 which you can use anytime on your app*
+
+## **Types of authentications**
+- Token Authentication
+- Json Web Token Authentication
 
 #
 
@@ -50,7 +54,7 @@
 
 #
 
-## **Login and Register**
+## **Login or Register**
 
 #
 

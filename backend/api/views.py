@@ -6,6 +6,7 @@ from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
+from rest_framework import status
 
 from .models import ProfileModel
 from .serializer import *
@@ -29,12 +30,10 @@ def register(request):
         serializer = CreateUserSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status=201)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
             
         else:
-            return Response(serializer.errors, status=400)
-
-        return Response(serializer.data, status=201)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 def logout(request):
     return logout(request)
@@ -44,8 +43,13 @@ def logout(request):
 @api_view(['GET'])
 def api_overview(request):
     api_urls = {
-        "LOGIN TO GET A TOKEN": "/token",
-        "VIEW PROFILE": "/"
+        "GET A TOKEN": "token/",
+        "GET A JSON WEB TOKEN": "json-token/",
+        "REFRESH A JSON WEB TOKEN": "json-token/refresh/",
+        "HOME": "/",
+        "REGISTER": "register/",
+        "VIEW PROFILE": "profile/",
+        "VIEW USER": "user/",
     }
 
     return Response(api_urls)
@@ -61,7 +65,7 @@ def profile(request):
     
     if request.method == 'GET':
         serializer = UserProfileSerializer(user, many=False)
-        return Response(serializer.data, status=201)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     elif request.method == 'PUT':
         serializer = UserProfileSerializer(user, many=False)
@@ -69,16 +73,13 @@ def profile(request):
         
         if profile_serializer.is_valid():
             profile_serializer.save()
-            return Response(serializer.data, status=201)
+            return Response(serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(profile_serializer.errors, status=400)
+            return Response(profile_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'DELETE':
         user.delete()
         return Response("User deleted!...")
-        
-    else:
-        return Response(serializer.errors, status=400)
 
 
 @api_view(['PUT'])
@@ -91,10 +92,8 @@ def user(request):
         user_serializer = UserSerializer(instance=user, data=request.data)
         if user_serializer.is_valid():
             user_serializer.save()
-            return Response(serializer.data, status=201)
+            return Response(serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(user_serializer.errors, status=400)
-    else:
-        return Response(serializer.errors, status=400)
+            return Response(user_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 # ================================================ Profile ==================================================
