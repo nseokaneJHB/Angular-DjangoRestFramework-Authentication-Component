@@ -11,13 +11,13 @@ export class AuthenticationComponent implements OnInit {
 
 	alert_message: string = "";
 	username: string = "";
-	errors: any = {}
+	errors: any = {};
 
 	// Forms
 	loginForm: any = new FormGroup({
 		"username": new FormControl(''),
 		"password": new FormControl('')
-	})
+	});
 
 	registerForm: any = new FormGroup({
 		"username": new FormControl(''),
@@ -26,7 +26,7 @@ export class AuthenticationComponent implements OnInit {
 		"email": new FormControl(''),
 		"password": new FormControl(''),
 		"password2": new FormControl('')
-	})
+	});
 
 	constructor(private __api: ApiService) { }
 
@@ -42,22 +42,22 @@ export class AuthenticationComponent implements OnInit {
 
 		if (expiry) {
 			setTimeout(() => {
-				this.alert_message = expiry.register_message
-				this.username = expiry.username
+				this.alert_message = expiry.register_message;
+				this.username = expiry.username;
 				alert.style.display = 'block';
-				localStorage.clear()
+				localStorage.clear();
 			}, 500);
 
 			setTimeout(() => {
 				alert.style.display = 'none';
-				localStorage.clear()
+				localStorage.clear();
 			}, 5000);
 		}
 	}
 
 	ngOnInit(): void {
 		document.getElementById('register_alert').style.display = 'none';
-		this.load()
+		this.load();
 	}
 
 	// Show register form when "show sign up" is clicked and vise verse
@@ -73,6 +73,8 @@ export class AuthenticationComponent implements OnInit {
 
 		login_button.style.display = 'block';
 		register_form.style.display = 'block';
+
+		this.errors = {};
 	}
 
 	// Show login form when "show sign in" is clicked and vise verse
@@ -88,36 +90,45 @@ export class AuthenticationComponent implements OnInit {
 
 		login_form.style.display = 'block';
 		register_button.style.display = 'block';
+		
+		this.errors = {};
 	}
 
 	login(){
 		this.__api.loginUser(this.loginForm.value).subscribe((res: any) => {
 
-			localStorage.setItem("TOKEN", res.token)
-			localStorage.setItem("USER_ID", res.user_id)
-			localStorage.setItem("USERNAME", res.username)
+			localStorage.setItem("TOKEN", res.token);
+			localStorage.setItem("USER_ID", res.user_id);
+			localStorage.setItem("USERNAME", res.username);
 
-			this.loginForm.reset()
-			location.href = '/'
+			this.loginForm.reset();
+			location.href = '/';
 		}, (errors: any) => {
-			this.errors = errors.error
-		})
+			this.showError(errors.error);
+		});
 	}
 
 	register(){
-		let username = this.registerForm.value.username
+		let username = this.registerForm.value.username;
 		let expiry: any = {
 			'register_message': 'Successfully registered as',
 			'username': username
-		}
+		};
 
 		this.__api.registerUser(this.registerForm.value).subscribe((res: any) => {
-			localStorage.setItem("EXPIRE", JSON.stringify(expiry))
+			localStorage.setItem("EXPIRE", JSON.stringify(expiry));
 			this.registerForm.reset();
 			location.href = 'authentication';
 		}, (errors: any) => {
-			console.log(errors.error);
-			this.errors = errors.error
-		})
+			this.showError(errors.error);
+		});
+	}
+
+	showError(error: any){
+		this.errors = error;
+
+		setTimeout(() => {
+			this.errors = {};
+		}, 5000);
 	}
 }
