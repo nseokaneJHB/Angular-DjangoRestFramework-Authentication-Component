@@ -14,9 +14,7 @@ export class ApiService {
 		username: localStorage.getItem('USERNAME')
 	}
 
-	myToken = {
-		"refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYyNDU0NDIxMSwianRpIjoiOTMyNWY3MDZjNzY4NGNmZDg4ZDgyZjdlZDBlZjQ4ODEiLCJ1c2VyX2lkIjoxfQ.n8142qHAur5ZfYOX1LOoUGUXVXKH98I6bLbP0HPqxls"
-	}
+	// user: any = JSON.stringify(localStorage.getItem("FULL_STACK_AUTH_COMP_USER"))
 
 	headers = new HttpHeaders({
 		'Content-Type': 'application/json',

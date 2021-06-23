@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -32,6 +32,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     BrowserAnimationsModule,
     MDBBootstrapModule.forRoot(),
     ReactiveFormsModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule
   ],

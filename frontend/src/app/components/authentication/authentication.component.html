@@ -27,6 +27,8 @@
 			<small *ngIf="errors.password" class="error_alert">{{errors.password}}</small>
 		</div>
 
+		<mdb-checkbox formControlName="jwt" name="jwt">USE JSON WEB TOKEN</mdb-checkbox>
+
 		<small *ngIf="errors.non_field_errors" role="alert" class="other_error_alert text-center">{{errors.non_field_errors}}</small>
 
 		<small #alert id="register_alert" class="alert alert-success" role="alert">

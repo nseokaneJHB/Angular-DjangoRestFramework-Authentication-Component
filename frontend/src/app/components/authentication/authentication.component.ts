@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
 
 @Component({
@@ -16,7 +16,8 @@ export class AuthenticationComponent implements OnInit {
 	// Forms
 	loginForm: any = new FormGroup({
 		"username": new FormControl(''),
-		"password": new FormControl('')
+		"password": new FormControl(''),
+		"jwt": new FormControl(true)
 	});
 
 	registerForm: any = new FormGroup({
@@ -95,11 +96,14 @@ export class AuthenticationComponent implements OnInit {
 	}
 
 	login(){
+		console.log(this.loginForm.value);
+
 		this.__api.loginUser(this.loginForm.value).subscribe((res: any) => {
 
+			localStorage.setItem("FULL_STACK_AUTH_COMP_USER", JSON.stringify({"token": res.token, "user_id": res.user_id, "username": res.username}))
 			localStorage.setItem("TOKEN", res.token);
 			localStorage.setItem("USER_ID", res.user_id);
-			localStorage.setItem("USERNAME", res.username);
+			localStorage.setItem("USERNAME", res.username);			
 
 			this.loginForm.reset();
 			location.href = '/';
