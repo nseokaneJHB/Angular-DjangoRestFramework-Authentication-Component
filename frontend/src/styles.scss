@@ -280,7 +280,7 @@ body {
 		padding: 1em;
 		height: 70%;
 
-		.authentication_forms, .error-wrapper, .home-wrapper, .profile-wrapper{
+		.authentication_forms, .error-wrapper, .home-wrapper, .profile-wrapper, .password_reset_form{
 			flex-direction: column;
 			overflow-y: scroll;
 			display: flex;
@@ -301,8 +301,14 @@ body {
 		.forgot-password{
 			color: plum;
 		}
+		
+		.password_reset_form{
+			justify-content: center;
+			max-width: 500px;
+			margin: auto;
+		}
 
-		.authentication_forms{
+		.authentication_forms, .password_reset_form{
 			.buttons{
 				margin-bottom: 2em;
 			}
@@ -450,6 +456,7 @@ body {
 				font-size: 40px;
 			}
 		}
+
 		.home-wrapper{
 			letter-spacing: 5px;
 			h1{
@@ -460,6 +467,10 @@ body {
 		.profile-wrapper{
 			grid-template-columns: 50% 50%;
 			align-items: center;
+		}
+
+		.password_reset_form{
+			color: #eee;
 		}
 	}
 }

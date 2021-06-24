@@ -66,4 +66,8 @@ export class ApiService {
 	removeUserProfile(){
 		return this.__http.delete(`${this.url}/profile/`, { headers: this.getHeaders() })
 	}
+
+	passwordReset(email: any){
+		return this.__http.post(`${this.url}/password_reset/`, email )
+	}
 }
