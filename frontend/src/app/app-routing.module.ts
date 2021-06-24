@@ -15,11 +15,11 @@ import { RoutesGuard } from './guards/routes.guard';
 import { AuthenticationGuard } from './guards/authentication.guard';
 
 const routes: Routes = [
+	{ path: 'confirm-password', component: PasswordConfirmComponent, canActivate: [AuthenticationGuard]  },
+	{ path: 'reset-password', component: PasswordResetComponent, canActivate: [AuthenticationGuard]  },
 	{ path: 'authentication', component: AuthenticationComponent, canActivate: [AuthenticationGuard] },
 	{ path: 'profile', component: ProfileComponent, canActivate: [RoutesGuard] },
 	{ path: 'home', component: HomeComponent, canActivate: [RoutesGuard] },
-	{ path: 'confirm-password', component: PasswordConfirmComponent },
-	{ path: 'reset-password', component: PasswordResetComponent },
 	{ path: '', pathMatch: 'full', redirectTo: 'home' },
 	
 	// Error page

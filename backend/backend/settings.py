@@ -154,12 +154,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-# For the contact form
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_POST = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'kgotsonolan.django@gmail.com'
-EMAIL_HOST_PASSWORD = ''
-DEFAULT_FROM_EMAIL = 'CodingWithNolan AuthenticationComponent <noreply@gmail.com>'
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = 'CodingWithNolan AuthenticationComponent <noreply@authentication_component.com>'
