@@ -32,7 +32,10 @@
 			<small *ngIf="errors.detail" role="alert" class="error_alert text-center">{{errors.detail}}</small>
 		</div>
 
-		<mdb-checkbox formControlName="jwt" name="jwt"><small>AUTHENTICATE WITH JSON WEB TOKEN</small></mdb-checkbox>
+		<div class="d-flex justify-content-around">
+			<mdb-checkbox formControlName="jwt" name="jwt"><small class="text-white pb-5">Authenticate with JWT</small></mdb-checkbox>
+			<a class="forgot-password" routerLink='/reset-password'><small><u>I forgot my password</u></small></a>
+		</div>
 
 		<small #alert id="register_alert" class="alert alert-success" role="alert">
 			{{alert_message}} <strong>{{username}}</strong>

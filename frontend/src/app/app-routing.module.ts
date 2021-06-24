@@ -7,6 +7,9 @@ import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 
+import { PasswordResetComponent } from './components/password/password-reset/password-reset.component';
+import { PasswordConfirmComponent } from './components/password/password-confirm/password-confirm.component';
+
 // Guards
 import { RoutesGuard } from './guards/routes.guard';
 import { AuthenticationGuard } from './guards/authentication.guard';
@@ -15,6 +18,8 @@ const routes: Routes = [
 	{ path: 'authentication', component: AuthenticationComponent, canActivate: [AuthenticationGuard] },
 	{ path: 'profile', component: ProfileComponent, canActivate: [RoutesGuard] },
 	{ path: 'home', component: HomeComponent, canActivate: [RoutesGuard] },
+	{ path: 'confirm-password', component: PasswordConfirmComponent },
+	{ path: 'reset-password', component: PasswordResetComponent },
 	{ path: '', pathMatch: 'full', redirectTo: 'home' },
 	
 	// Error page

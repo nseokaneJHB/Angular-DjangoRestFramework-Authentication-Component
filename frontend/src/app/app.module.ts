@@ -17,6 +17,8 @@ import { HomeComponent } from './components/home/home.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { PasswordResetComponent } from './components/password/password-reset/password-reset.component';
+import { PasswordConfirmComponent } from './components/password/password-confirm/password-confirm.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { ProfileComponent } from './components/profile/profile.component';
     HomeComponent,
     NavigationComponent,
     NotfoundComponent,
-    ProfileComponent
+    ProfileComponent,
+    PasswordResetComponent,
+    PasswordConfirmComponent
   ],
   imports: [
     BrowserModule,
