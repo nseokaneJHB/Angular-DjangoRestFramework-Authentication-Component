@@ -14,7 +14,7 @@
 		</div>
 	</div>
 
-	<form id="login_form" [formGroup]="loginForm">
+	<form id="login_form" [formGroup]="loginForm" class="pb-4">
 		<div class="md-form">
 			<input mdbInput type="text" class="form-control form-control-sm" formControlName="username" >
 			<label><i class="fas fa-user-secret"></i>&nbsp;&nbsp;Username<strong>*</strong></label>
@@ -27,9 +27,12 @@
 			<small *ngIf="errors.password" class="error_alert">{{errors.password}}</small>
 		</div>
 
-		<mdb-checkbox formControlName="jwt" name="jwt">USE JSON WEB TOKEN</mdb-checkbox>
+		<div class="md-form">
+			<small *ngIf="errors.non_field_errors" role="alert" class="error_alert text-center">{{errors.non_field_errors}}</small>
+			<small *ngIf="errors.detail" role="alert" class="error_alert text-center">{{errors.detail}}</small>
+		</div>
 
-		<small *ngIf="errors.non_field_errors" role="alert" class="other_error_alert text-center">{{errors.non_field_errors}}</small>
+		<mdb-checkbox formControlName="jwt" name="jwt"><small>AUTHENTICATE WITH JSON WEB TOKEN</small></mdb-checkbox>
 
 		<small #alert id="register_alert" class="alert alert-success" role="alert">
 			{{alert_message}} <strong>{{username}}</strong>
@@ -40,7 +43,7 @@
 		</div>
 	</form>
 	
-	<form id="register_form" [formGroup]="registerForm">
+	<form id="register_form" [formGroup]="registerForm" class="pb-4">
 		<div class="md-form">
 			<input mdbInput type="text" class="form-control form-control-sm" formControlName="username" required>
 			<label><i class="fas fa-user-secret"></i>&nbsp;&nbsp;Username<strong>*</strong></label>

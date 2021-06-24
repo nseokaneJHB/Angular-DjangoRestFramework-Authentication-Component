@@ -287,6 +287,17 @@ body {
 			height: 100%;
 		}
 
+		.modal-content{
+			background-color: rgb(255, 255, 255);
+			border-radius: 20px;
+		}
+
+		.md-form{
+			label{
+				color: plum;
+			}
+		}
+
 		.authentication_forms{
 			.buttons{
 				margin-bottom: 2em;
@@ -340,7 +351,7 @@ body {
 		.profile-wrapper{
 			display: grid;
 			
-			form{
+			.form{
 				background-color: rgba(238, 238, 238, 0.118);
 				border-radius: 20px;
 				padding: .5em 2em;
@@ -419,6 +430,9 @@ body {
 			max-width: 700px;
 			margin: auto;
 			color: #eee;
+			.buttons{
+				margin-top: 2em;
+			}
 		}
 
 		.error-wrapper{

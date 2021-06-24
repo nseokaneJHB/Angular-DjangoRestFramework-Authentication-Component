@@ -17,7 +17,7 @@ export class AuthenticationComponent implements OnInit {
 	loginForm: any = new FormGroup({
 		"username": new FormControl(''),
 		"password": new FormControl(''),
-		"jwt": new FormControl(true)
+		"jwt": new FormControl(false)
 	});
 
 	registerForm: any = new FormGroup({
@@ -96,15 +96,9 @@ export class AuthenticationComponent implements OnInit {
 	}
 
 	login(){
-		console.log(this.loginForm.value);
-
 		this.__api.loginUser(this.loginForm.value).subscribe((res: any) => {
-
-			localStorage.setItem("FULL_STACK_AUTH_COMP_USER", JSON.stringify({"token": res.token, "user_id": res.user_id, "username": res.username}))
-			localStorage.setItem("TOKEN", res.token);
-			localStorage.setItem("USER_ID", res.user_id);
-			localStorage.setItem("USERNAME", res.username);			
-
+			res = {...res, username: this.loginForm.value.username}
+			localStorage.setItem("FULL_STACK_AUTH_COMP_USER", JSON.stringify(res))
 			this.loginForm.reset();
 			location.href = '/';
 		}, (errors: any) => {

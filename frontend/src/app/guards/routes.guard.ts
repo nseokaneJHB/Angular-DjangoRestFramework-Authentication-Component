@@ -7,16 +7,12 @@ import { Observable } from 'rxjs';
 })
 export class RoutesGuard implements CanActivate {
 
-	user: any = {
-		token: localStorage.getItem('TOKEN'),
-		user_id: localStorage.getItem('USER_ID'), 
-		username: localStorage.getItem('USERNAME')
-	}
+	user: any = JSON.parse(localStorage.getItem("FULL_STACK_AUTH_COMP_USER"));
 
 	constructor(private __router: Router){}
 
 	canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree {
-		if (this.user.token !== null && this.user.user_id !== null && this.user.username !== null) {
+		if (this.user) {
 			return true
 		}else{
 			return this.__router.parseUrl("/authentication");

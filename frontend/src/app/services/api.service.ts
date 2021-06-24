@@ -8,18 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ApiService {
 
-	user: any = {
-		token: localStorage.getItem('TOKEN'),
-		user_id: localStorage.getItem('USER_ID'), 
-		username: localStorage.getItem('USERNAME')
-	}
-
-	// user: any = JSON.stringify(localStorage.getItem("FULL_STACK_AUTH_COMP_USER"))
-
-	headers = new HttpHeaders({
-		'Content-Type': 'application/json',
-		'Authorization': `Token ${this.user.token}`,
-	});
+	headers: any = {}
 
 	constructor(private __http: HttpClient) { }
 
@@ -30,22 +19,51 @@ export class ApiService {
 	}
 
 	loginUser(user: any){
-		return this.__http.post(`${this.url}/token/`, user)
+		let authUser = {
+			"username": user.username, 
+			"password": user.password
+		}
+
+		if (user.jwt) {
+			return this.__http.post(`${this.url}/json-token/`, authUser )
+		}
+
+		return this.__http.post(`${this.url}/token/`, authUser )
+	}
+
+	getHeaders(){
+		let user: any = JSON.parse(localStorage.getItem("FULL_STACK_AUTH_COMP_USER"));
+
+		if (user) {
+			if (user.access && user.refresh) {
+				return new HttpHeaders({
+					'Content-Type': 'application/json',
+					'Authorization': `JWT ${user.access}`
+				});
+			}
+	
+			return new HttpHeaders({
+				'Content-Type': 'application/json',
+				'Authorization': `token ${user.token}`
+			});
+		}
+
+		return
 	}
 
 	getUser(){
-		return this.__http.get(`${this.url}/profile/`, { headers: this.headers })
+		return this.__http.get(`${this.url}/profile/`, { headers: this.getHeaders() })
 	}
 
 	updateUser(user: any){
-		return this.__http.put(`${this.url}/user/`, user, { headers: this.headers })
+		return this.__http.put(`${this.url}/user/`, user, { headers: this.getHeaders() })
 	}
 
 	updateProfile(profile: any){
-		return this.__http.put(`${this.url}/profile/`, profile, { headers: this.headers })
+		return this.__http.put(`${this.url}/profile/`, profile, { headers: this.getHeaders() })
 	}
 
 	removeUserProfile(){
-		return this.__http.delete(`${this.url}/profile/`, { headers: this.headers })
+		return this.__http.delete(`${this.url}/profile/`, { headers: this.getHeaders() })
 	}
 }

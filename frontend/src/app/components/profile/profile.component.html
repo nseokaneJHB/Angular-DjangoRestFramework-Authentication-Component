@@ -37,7 +37,7 @@
 	</div>
 
 	<div class="profile-details">
-		<form>
+		<div class="form">
 			<div class="md-form">
 				<input mdbInput type="text" class="form-control form-control-sm" formControlName="username"
 					required>
@@ -78,7 +78,7 @@
 				<button type="button" mdbBtn color="info" size="sm" mdbWavesEffect (click)="submit()">Submit</button>
 				<button type="button" mdbBtn color="warning" size="sm" class="relative waves-light" (click)="deleteModal.show()" mdbWavesEffect>Delete profile</button >
 			</div>
-		</form>
+		</div>
 		<div mdbModal #deleteModal="mdbModal" class="modal fade center" tabindex="-1" role="dialog" aria-labelledby="myDeleteModalLabel" aria-hidden="true" style="margin-top: 150px;">
 			<div class="modal-dialog" role="document">
 				<div id="deleteModal" class="modal-content">
@@ -91,6 +91,7 @@
 					</div>
 				</div>
 			</div>
+		</div>
 	</div>
 </div>
 
