@@ -1,4 +1,4 @@
-# **Components**
+# **Authentication Full Stack App**
 
 *You will find a Full Stack Authentication component built with Django Rest Framework and Angular 11 which you can use anytime on your app*
 
