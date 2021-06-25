@@ -46,7 +46,7 @@ class ProfileModel(models.Model):
 @receiver(reset_password_token_created)
 def password_reset_token_created(sender, instance, reset_password_token, *args, **kwargs):
 
-    email_plaintext_message = "http://127.0.0.1:8000{}confirm/?token={}".format(reverse('password_reset:reset-password-request'), reset_password_token.key)
+    email_plaintext_message = "http://127.0.0.1:4200/confirm-password/?token={}".format(reset_password_token.key)
 
     send_mail(
         # title:

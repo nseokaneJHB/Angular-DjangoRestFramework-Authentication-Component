@@ -70,4 +70,8 @@ export class ApiService {
 	passwordReset(email: any){
 		return this.__http.post(`${this.url}/password_reset/`, email )
 	}
+
+	passwordConfirm(email_token: any){
+		return this.__http.post(`${this.url}/password_reset/confirm/`, email_token )
+	}
 }
