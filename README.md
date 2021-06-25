@@ -5,7 +5,8 @@
 ## **Features**
 - Token Authentication
 - Json Web Token Authentication
-- Forgot password
+- Password Reset
+- Social Login
 
 #
 
