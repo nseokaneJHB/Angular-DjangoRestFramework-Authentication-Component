@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
+import { SocialAuthService, FacebookLoginProvider, GoogleLoginProvider, SocialUser } from 'angularx-social-login';
 
 @Component({
 	selector: 'app-authentication',
@@ -9,6 +10,7 @@ import { ApiService } from '../../services/api.service';
 })
 export class AuthenticationComponent implements OnInit {
 
+	socialUser: SocialUser;
 	alert_message: string = "";
 	username: string = "";
 	errors: any = {};
@@ -29,7 +31,7 @@ export class AuthenticationComponent implements OnInit {
 		"password2": new FormControl('')
 	});
 
-	constructor(private __api: ApiService) { }
+	constructor(private __api: ApiService, private __auth: SocialAuthService) { }
 
 	load(){
 		let alert: any = document.getElementById('register_alert');
@@ -58,6 +60,7 @@ export class AuthenticationComponent implements OnInit {
 
 	ngOnInit(): void {
 		document.getElementById('register_alert').style.display = 'none';
+
 		this.load();
 	}
 
@@ -104,6 +107,11 @@ export class AuthenticationComponent implements OnInit {
 		}, (errors: any) => {
 			this.showError(errors.error);
 		});
+
+		this.__auth.authState.subscribe((user) => {
+			this.socialUser = user;
+			console.log("USER:", this.socialUser);
+		});
 	}
 
 	register(){
@@ -119,6 +127,22 @@ export class AuthenticationComponent implements OnInit {
 			location.href = 'authentication';
 		}, (errors: any) => {
 			this.showError(errors.error);
+		});
+	}
+
+	loginWithFacebook(){
+		this.__auth.signIn(FacebookLoginProvider.PROVIDER_ID).then((res: any) => {
+			this.__api.socialLogin(res)
+		}).catch((error: any) => {
+			console.log(error);
+		});
+	}
+
+	loginWithGoogle(){
+		this.__auth.signIn(GoogleLoginProvider.PROVIDER_ID).then((res: any) => {
+			this.__api.socialLogin(res);
+		}).catch((error: any) => {
+			console.log(error);
 		});
 	}
 

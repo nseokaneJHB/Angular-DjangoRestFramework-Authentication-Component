@@ -31,6 +31,12 @@ export class ApiService {
 		return this.__http.post(`${this.url}/token/`, authUser )
 	}
 
+	socialLogin(details: any){
+		console.log(details);
+		
+		// return this.__http.post(`${this.url}/social-auth/convert-token/`, details)
+	}
+
 	getHeaders(){
 		let user: any = JSON.parse(localStorage.getItem("FULL_STACK_AUTH_COMP_USER"));
 
@@ -68,10 +74,10 @@ export class ApiService {
 	}
 
 	passwordReset(email: any){
-		return this.__http.post(`${this.url}/password_reset/`, email )
+		return this.__http.post(`${this.url}/password-reset/`, email )
 	}
 
 	passwordConfirm(email_token: any){
-		return this.__http.post(`${this.url}/password_reset/confirm/`, email_token )
+		return this.__http.post(`${this.url}/password-reset/confirm/`, email_token )
 	}
 }

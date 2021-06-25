@@ -50,6 +50,9 @@ def api_overview(request):
         "REGISTER": "register/",
         "VIEW PROFILE": "profile/",
         "VIEW USER": "user/",
+        "PASSWORD RESET": "password_reset/",
+        "PASSWORD RESET CONFIRM": "password_reset/confirm/",
+        "SOCIAL OAUTH LOGIN": "social-auth/token/",
     }
 
     return Response(api_urls)

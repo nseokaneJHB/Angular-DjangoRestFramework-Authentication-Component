@@ -24,5 +24,9 @@ urlpatterns = [
 	path("profile/", views.profile, name="profile"),
 	path("user/", views.user, name="user"),
 
-	path('password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
-]
+	# Password reset
+	path('password-reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
+
+	# Social Oauth
+	path('social-auth/', include('drf_social_oauth2.urls', namespace='drf')),
+] 

@@ -309,6 +309,12 @@ body {
 		}
 
 		.authentication_forms, .password_reset_form{
+			.social-button{
+				padding: 1em 1.3em;
+				border-radius: 50%;
+				border: none;
+			}
+
 			.buttons{
 				margin-bottom: 2em;
 			}
@@ -441,7 +447,7 @@ body {
 			margin: auto;
 			color: #eee;
 			.buttons{
-				margin-top: 2em;
+				margin-top: 1em;
 			}
 		}
 
